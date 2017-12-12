@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.subjectTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="cont">
+                    <h1>#{str.subjectListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{subjectBean.iniciar()}"></p:commandButton>
+                    </h:form>
+                    <p:dataTable value="#{subjectBean.subjects}" var="s">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{subjectBean.editar(s)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.subjectNameHeader}">
+                            <p:outputLabel value="#{s.subjectName}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="#{str.subjectCuatriHeaderPrompt}">
+                            <p:outputLabel value="#{s.subjectCuatri}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="#{str.subjectEdificHeaderPrompt}">
+                            <p:outputLabel value="#{s.subjectEdific}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="#{str.subjectObjetiveHeader}">
+                            <p:outputLabel value="#{s.objetive}"></p:outputLabel>
+                        </p:column>
+                        <p:column headerText="#{str.specialtyNameHeader}">
+                            <p:outputLabel value="#{s.specialty.name}"></p:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>
